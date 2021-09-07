@@ -38,6 +38,8 @@ collecting and saving some images and video to use to develop the algorithms off
 I also housed the Raspberry Pi + Camera in a small box for some stability. Kinda rough, but 
 gets the job done for the time being. 
 
+<img src="https://github.com/ahope/fuzzy-octo-robot/blob/master/resources/box4.png" width="200">
+
 # Step 2: Capture some starting data
 
 **Goal: Capture some still images of the background, and some video of the 
