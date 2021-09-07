@@ -1,6 +1,7 @@
 # The all-new HI-SPACE
 
 <img src="https://img.shields.io/badge/Raspberry%20Pi-A22846?style=for-the-badge&logo=Raspberry%20Pi&logoColor=white"/>
+<img src="https://img.shields.io/badge/OpenCV-27338e?style=for-the-badge&logo=OpenCV&logoColor=white"/>
 
 I wrote a bit about the HI-SPACE table and my motivation for this project [here](https://medium.com/@ahslaughter/the-hi-space-table-4ac7f2d9f26c). 
 
