@@ -4,7 +4,10 @@
 <img src="https://img.shields.io/badge/OpenCV-27338e?style=for-the-badge&logo=OpenCV&logoColor=white"/>
 <img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=darkgreen"/>
 
-I wrote a bit about the HI-SPACE table and my motivation for this project [here](https://medium.com/@ahslaughter/the-hi-space-table-4ac7f2d9f26c). 
+I wrote a bit about the HI-SPACE table and my motivation for this project [here](https://medium.com/@ahslaughter/the-hi-space-table-4ac7f2d9f26c).
+
+There's also a fun little paper describing the original HI-SPACE (and a fun application-- virtual air hockey!) 
+[here](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.99.4319&rep=rep1&type=pdf)
 
 # Overview
 
