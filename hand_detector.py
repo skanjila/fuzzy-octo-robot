@@ -32,10 +32,11 @@ cv2.imshow("Display window", gray_background)
 WIN_RF = "Reference"
 
 framenum = -1 # Frame counter
-cap = cv2.VideoCapture("sample1.h264")
+source_path = "resources/sample1.h264"
+cap = cv2.VideoCapture(source_path)
 
 if not cap.isOpened():
-    print("Could not open the reference " + sourceReference)
+    print("Could not open the path " + source_path)
     sys.exit(-1)
 
 ref_size = (int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)), int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)))
