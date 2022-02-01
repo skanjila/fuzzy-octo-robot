@@ -70,50 +70,50 @@ def skeletonize(image_in):
 delay = 3
 # Read until video is completed
 while(cap.isOpened()):
-  # Capture frame-by-frame
-  ret, frame = cap.read()
-  if ret == True:
-    gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
-    out = gray.copy()
-    out[0:0, 300:400] = 0
-    # diff = gray - gray_background
-    cv.subtract(gray, gray_background, out)
+    # Capture frame-by-frame
+    ret, frame = cap.read()
+    if ret == True:
+        gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
+        out = gray.copy()
+        out[0:0, 300:400] = 0
+        # diff = gray - gray_background
+        cv.subtract(gray, gray_background, out)
 
-    kernel = np.ones((5, 5), np.float32) / 25
-    dst = cv.filter2D(out, -1, kernel)
+        kernel = np.ones((5, 5), np.float32) / 25
+        dst = cv.filter2D(out, -1, kernel)
 
-    ret, thresh1 = cv.threshold(dst, 25, 255, cv.THRESH_BINARY)
+        ret, thresh1 = cv.threshold(dst, 25, 255, cv.THRESH_BINARY)
 
-    ## Using SSIM Instead of our more manual approach
-    (score, diff) = compare_ssim(gray, gray_background, full=True)
-    diff = (diff * 255).astype("uint8")
-    print("SSIM: {}".format(score))
-    thresh = cv.threshold(diff, 0, 255,
-                           cv.THRESH_BINARY_INV | cv.THRESH_OTSU)[1]
-    cnts = cv.findContours(thresh.copy(), cv.RETR_EXTERNAL,
-                            cv.CHAIN_APPROX_SIMPLE)
-    cnts = imutils.grab_contours(cnts)
+        ## Using SSIM Instead of our more manual approach
+        (score, diff) = compare_ssim(gray, gray_background, full=True)
+        diff = (diff * 255).astype("uint8")
+        print("SSIM: {}".format(score))
+        thresh = cv.threshold(diff, 0, 255,
+                               cv.THRESH_BINARY_INV | cv.THRESH_OTSU)[1]
+        cnts = cv.findContours(thresh.copy(), cv.RETR_EXTERNAL,
+                                cv.CHAIN_APPROX_SIMPLE)
+        cnts = imutils.grab_contours(cnts)
 
-    # loop over the contours
-    for c in cnts:
-        # compute the bounding box of the contour and then draw the
-        # bounding box on both input images to represent where the two
-        # images differ
-        (x, y, w, h) = cv.boundingRect(c)
-        cv.rectangle(gray, (x, y), (x + w, y + h), (0, 0, 255), 2)
-        # cv.rectangle(imageB, (x, y), (x + w, y + h), (0, 0, 255), 2)
+        # loop over the contours
+        for c in cnts:
+            # compute the bounding box of the contour and then draw the
+            # bounding box on both input images to represent where the two
+            # images differ
+            (x, y, w, h) = cv.boundingRect(c)
+            cv.rectangle(gray, (x, y), (x + w, y + h), (0, 0, 255), 2)
+            # cv.rectangle(imageB, (x, y), (x + w, y + h), (0, 0, 255), 2)
 
-    # Display the resulting frame
-    cv.imshow('Frame', gray)
-    cv.imshow("diff", thresh1)
+        # Display the resulting frame
+        cv.imshow('Frame', gray)
+        cv.imshow("diff", thresh1)
 
-    # Press Q on keyboard to  exit
-    if cv.waitKey(250) & 0xFF == ord('q'):
-      break
+        # Press Q on keyboard to  exit
+        if cv.waitKey(250) & 0xFF == ord('q'):
+            break
 
-  # Break the loop
-  else:
-    break
+    # Break the loop
+    else:
+        break
 
 
 # Press Q on keyboard to  exit
